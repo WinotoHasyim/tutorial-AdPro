@@ -24,10 +24,16 @@ public class ProductRepository {
         return productToEdit;
     }
 
+    public Product delete(String productId){
+        Product productToDelete = findProductById(productId);
+        productData.remove(productToDelete);
+        return productToDelete;
+    }
+
     public Product findProductById(String productId){
-        for(Product IteratedProduct: productData){
-            if(IteratedProduct.getProductId().equals(productId)){
-                return IteratedProduct;
+        for(Product iteratedProduct: productData){
+            if(iteratedProduct.getProductId().equals(productId)){
+                return iteratedProduct;
             }
         }
         return null;
