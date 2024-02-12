@@ -12,11 +12,13 @@ public class ProductRepository {
     private List<Product> productData = new ArrayList<>();
 
     public Product create(Product product){
+        validateProduct(product);
         productData.add(product);
         return product;
     }
 
     public Product edit(Product dummyProduct){
+        validateProduct(dummyProduct);
         String productId = dummyProduct.getProductId();
         Product productToEdit = findProductById(productId);
         productToEdit.setProductName(dummyProduct.getProductName());
@@ -41,5 +43,14 @@ public class ProductRepository {
 
     public Iterator<Product> findAll(){
         return productData.iterator();
+    }
+
+    private void validateProduct(Product product) {
+        if (product == null || product.getProductName() == null || product.getProductName().isEmpty() || String.valueOf(product.getProductQuantity()).isEmpty()) {
+            throw new IllegalArgumentException("Product should have a name and quantity");
+        }
+        else if (product.getProductQuantity() < 0) {
+            throw new IllegalArgumentException("Product quantity should not be negative");
+        }
     }
 }
