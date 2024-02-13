@@ -22,6 +22,24 @@ class ProductRepositoryTest {
     }
 
     @Test
+    void testFindProductByNonExistentId() {
+        Product existingProduct = new Product();
+        existingProduct.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        existingProduct.setProductName("Sampo Cap Bambang");
+        existingProduct.setProductQuantity(100);
+        productRepository.create(existingProduct);
+
+        Product existingProduct2 = new Product();
+        existingProduct2.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd7");
+        existingProduct2.setProductName("Sampo Cap Budi");
+        existingProduct2.setProductQuantity(10);
+        productRepository.create(existingProduct2);
+
+        Product nonExistingProduct = productRepository.findProductById("nonexistentId");
+        assertNull(nonExistingProduct);
+    }
+
+    @Test
     void testCreateAndFind() {
         Product product = new Product();
         product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
