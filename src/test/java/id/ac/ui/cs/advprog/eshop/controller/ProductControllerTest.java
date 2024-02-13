@@ -1,24 +1,18 @@
 package id.ac.ui.cs.advprog.eshop.controller;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-
 import id.ac.ui.cs.advprog.eshop.model.Product;
 import id.ac.ui.cs.advprog.eshop.service.ProductService;
-
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 
 import java.util.Arrays;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 
@@ -36,7 +30,7 @@ class ProductControllerTest {
         mockMvc.perform(get("/product/create"))
                 .andExpect(status().isOk())
                 .andExpect(model().attributeExists("product"))
-                .andExpect(view().name("createProduct"));
+                .andExpect(view().name("CreateProduct"));
     }
 
     @Test
@@ -56,7 +50,7 @@ class ProductControllerTest {
         mockMvc.perform(get("/product/edit/1"))
                 .andExpect(status().isOk())
                 .andExpect(model().attributeExists("product"))
-                .andExpect(view().name("editProduct"));
+                .andExpect(view().name("EditProduct"));
     }
 
     @Test
@@ -82,7 +76,7 @@ class ProductControllerTest {
         mockMvc.perform(get("/product/list"))
                 .andExpect(status().isOk())
                 .andExpect(model().attributeExists("products"))
-                .andExpect(view().name("productList"));
+                .andExpect(view().name("ProductList"));
     }
 
     Product productInitializer(String productId, String productName, int productQuantity) {
