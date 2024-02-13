@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Iterator;
 
@@ -19,6 +18,24 @@ class ProductRepositoryTest {
     ProductRepository productRepository;
     @BeforeEach
     void setUp() {
+    }
+
+    @Test
+    void testFindProductByNonExistentId() {
+        Product existingProduct = new Product();
+        existingProduct.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        existingProduct.setProductName("Sampo Cap Bambang");
+        existingProduct.setProductQuantity(100);
+        productRepository.create(existingProduct);
+
+        Product existingProduct2 = new Product();
+        existingProduct2.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd7");
+        existingProduct2.setProductName("Sampo Cap Budi");
+        existingProduct2.setProductQuantity(10);
+        productRepository.create(existingProduct2);
+
+        Product nonExistingProduct = productRepository.findProductById("nonexistentId");
+        assertNull(nonExistingProduct);
     }
 
     @Test
