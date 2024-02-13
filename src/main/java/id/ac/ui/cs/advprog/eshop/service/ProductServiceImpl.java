@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService {
-    
+
     @Autowired
     private ProductRepository productRepository;
 
@@ -22,17 +22,17 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product edit(Product dummyProduct){
+    public Product edit(Product dummyProduct) {
         return productRepository.edit(dummyProduct);
     }
-    
+
     @Override
-    public Product delete(String productId){
+    public Product delete(String productId) {
         return productRepository.delete(productId);
     }
 
     @Override
-    public Product findProductById(String productId){
+    public Product findProductById(String productId) {
         return productRepository.findProductById(productId);
     }
 
