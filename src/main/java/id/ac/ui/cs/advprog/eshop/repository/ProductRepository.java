@@ -46,7 +46,7 @@ public class ProductRepository {
     }
 
     private void validateProduct(Product product) {
-        if (product == null || product.getProductName() == null || product.getProductName().isEmpty() || String.valueOf(product.getProductQuantity()).isEmpty()) {
+        if (product == null || product.getProductName() == null || product.getProductName().isEmpty()) {
             throw new IllegalArgumentException("Product should have a name and quantity");
         }
         else if (product.getProductQuantity() < 0) {

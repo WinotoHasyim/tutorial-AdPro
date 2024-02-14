@@ -7,15 +7,18 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class ProductRepositoryTest {
-    
+
     @InjectMocks
     ProductRepository productRepository;
+
     @BeforeEach
     void setUp() {
     }
@@ -36,6 +39,18 @@ class ProductRepositoryTest {
 
         Product nonExistingProduct = productRepository.findProductById("nonexistentId");
         assertNull(nonExistingProduct);
+    }
+
+    @Test
+    void testCreateNullAndNoNameProduct() {
+        Product nullProduct = null;
+        assertThrows(IllegalArgumentException.class, () -> productRepository.create(nullProduct));
+
+        Product testProduct = new Product();
+        testProduct.setProductId("24");
+        testProduct.setProductQuantity(1);
+        testProduct.setProductName("");
+        assertThrows(IllegalArgumentException.class, () -> productRepository.create(testProduct));
     }
 
     @Test
@@ -80,8 +95,9 @@ class ProductRepositoryTest {
         Iterator<Product> productIterator = productRepository.findAll();
         assertFalse(productIterator.hasNext());
     }
+
     @Test
-    void testFindAllIfMoreThanOneProduct(){
+    void testFindAllIfMoreThanOneProduct() {
         Product product1 = new Product();
         product1.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
         product1.setProductName("Sampo Cap Bambang");
@@ -104,7 +120,7 @@ class ProductRepositoryTest {
     }
 
     @Test
-    void testEditProduct(){
+    void testEditProduct() {
         Product product = new Product();
         product.setProductId("product");
         product.setProductName("testProduct");
@@ -154,7 +170,7 @@ class ProductRepositoryTest {
         editedProduct.setProductName("testProduct");
         editedProduct.setProductQuantity(-100);
         assertThrows(IllegalArgumentException.class, () -> productRepository.edit(editedProduct));
-        
+
         Product originalProduct = productRepository.findProductById(product.getProductId());
         assertNotNull(originalProduct);
         assertEquals(originalProduct.getProductQuantity(), 100);
@@ -173,4 +189,3 @@ class ProductRepositoryTest {
         assertNull(productRepository.findProductById(product.getProductId()));
     }
 }
-
