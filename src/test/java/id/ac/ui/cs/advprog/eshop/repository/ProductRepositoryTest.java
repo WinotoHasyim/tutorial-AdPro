@@ -119,14 +119,15 @@ class ProductRepositoryTest {
 
     @Test
     void testEditProduct() {
+        final String PRODUCT_ID = "product";
         Product product = new Product();
-        product.setProductId("product");
+        product.setProductId(PRODUCT_ID);
         product.setProductName("testProduct");
         product.setProductQuantity(100);
         productRepository.create(product);
 
         Product updatedProduct = new Product();
-        updatedProduct.setProductId("product");
+        updatedProduct.setProductId(PRODUCT_ID);
         updatedProduct.setProductName("updatedProduct");
         updatedProduct.setProductQuantity(50);
         productRepository.edit(updatedProduct);
@@ -151,8 +152,8 @@ class ProductRepositoryTest {
 
         Product originalProduct = productRepository.findProductById(product.getProductId());
         assertNotNull(originalProduct);
-        assertEquals(originalProduct.getProductName(), "testProduct");
-        assertEquals(originalProduct.getProductQuantity(), 100);
+        assertEquals("testProduct", originalProduct.getProductName());
+        assertEquals(100, originalProduct.getProductQuantity());
     }
 
     @Test
@@ -171,7 +172,7 @@ class ProductRepositoryTest {
 
         Product originalProduct = productRepository.findProductById(product.getProductId());
         assertNotNull(originalProduct);
-        assertEquals(originalProduct.getProductQuantity(), 100);
+        assertEquals(100, originalProduct.getProductQuantity());
     }
 
     @Test

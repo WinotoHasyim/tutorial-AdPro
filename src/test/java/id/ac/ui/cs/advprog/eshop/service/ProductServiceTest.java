@@ -28,6 +28,7 @@ class ProductServiceTest {
 
     @BeforeEach
     void setUp() {
+        // This method is empty because there is no specific setup required for each test in this class.
     }
 
     @Test
@@ -81,7 +82,7 @@ class ProductServiceTest {
         when(repository.findAll()).thenReturn(Arrays.asList(product1, product2).iterator());
         List<Product> productList = service.findAll();
         verify(repository, times(1)).findAll();
-        assertEquals(productList.size(), 2);
+        assertEquals(2, productList.size());
     }
 
     @Test
