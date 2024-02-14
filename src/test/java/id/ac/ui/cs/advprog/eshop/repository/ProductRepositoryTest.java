@@ -120,9 +120,10 @@ class ProductRepositoryTest {
     @Test
     void testEditProduct() {
         final String PRODUCT_ID = "product";
+        final String PRODUCT_NAME = "testProduct";
         Product product = new Product();
         product.setProductId(PRODUCT_ID);
-        product.setProductName("testProduct");
+        product.setProductName(PRODUCT_NAME);
         product.setProductQuantity(100);
         productRepository.create(product);
 
