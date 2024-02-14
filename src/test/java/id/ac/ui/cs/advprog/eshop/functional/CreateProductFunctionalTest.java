@@ -38,7 +38,7 @@ class CreateProductFunctionalTest {
     }
 
     @Test
-    void pageTitle_isCorrect(ChromeDriver driver) throws Exception {
+    void verifyPageTitleIsCorrect(ChromeDriver driver) throws Exception {
         // Exercise
         driver.get(baseUrl);
         String pageTitle = driver.getTitle();
@@ -85,9 +85,9 @@ class CreateProductFunctionalTest {
         assertEquals("Product' List", welcomeMessage);
 
         String productNameInList = driver.findElement(By.xpath("/html/body/div/table/tbody/tr/td[1]")).getText();
-        assertEquals(productNameInList, "Indomie");
+        assertEquals("Indomie", productNameInList);
 
         String productQuantityInList = driver.findElement(By.xpath("/html/body/div/table/tbody/tr/td[2]")).getText();
-        assertEquals(productQuantityInList, "10");
+        assertEquals("10", productQuantityInList);
     }
 }
