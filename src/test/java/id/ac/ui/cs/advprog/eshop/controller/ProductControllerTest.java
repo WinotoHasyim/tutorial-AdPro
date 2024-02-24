@@ -46,7 +46,7 @@ class ProductControllerTest {
 
     @Test
     void testEditProductPage() throws Exception {
-        when(service.findProductById("1")).thenReturn(productInitializer("1", "Existing Product", 10));
+        when(service.findById("1")).thenReturn(productInitializer("1", "Existing Product", 10));
         mockMvc.perform(get("/product/edit/1"))
                 .andExpect(status().isOk())
                 .andExpect(model().attributeExists("product"))
