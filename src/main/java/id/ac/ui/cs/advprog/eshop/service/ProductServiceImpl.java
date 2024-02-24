@@ -19,13 +19,12 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product create(Product product) {
-        productRepository.create(product);
-        return product;
+        return productRepository.create(product);
     }
 
     @Override
-    public Product edit(Product dummyProduct) {
-        return productRepository.edit(dummyProduct);
+    public Product edit(Product updatedProduct) {
+        return productRepository.edit(updatedProduct);
     }
 
     @Override
@@ -34,8 +33,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product findProductById(String productId) {
-        return productRepository.findProductById(productId);
+    public Product findById(String productId) {
+        return productRepository.findById(productId);
     }
 
     @Override

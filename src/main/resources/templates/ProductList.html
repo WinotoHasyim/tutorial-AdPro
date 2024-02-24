@@ -24,10 +24,10 @@
             <td th:text="${product.productName}"></td>
             <td th:text="${product.productQuantity}"></td>
             <td>
-                <a th:href="@{'/product/edit/' + ${product.productId}}" class="btn btn-primary btn-sm">Edit</a>
+                <a th:href="@{/product/edit/{id}(id=${product.productId})}" class="btn btn-primary btn-sm">Edit</a>
             </td>
             <td>
-                <form th:action="@{'/product/delete/' + ${product.productId}}" method="post">
+                <form th:action="@{/product/delete/{id}(id=${product.productId})}" method="post">
                     <button type="submit" class="btn btn-primary btn-sm">Delete</button>
                 </form>
             </td>

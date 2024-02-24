@@ -90,9 +90,9 @@ class ProductServiceTest {
         Product product1 = productInitializer("eb558e9f-1c39-460e-8860-71af6af63bd6", "Sampo Cap Bambang", 100);
         service.create(product1);
 
-        when(repository.findProductById(product1.getProductId())).thenReturn(product1);
-        Product foundProduct = service.findProductById(product1.getProductId());
-        verify(repository, times(1)).findProductById(product1.getProductId());
+        when(repository.findById(product1.getProductId())).thenReturn(product1);
+        Product foundProduct = service.findById(product1.getProductId());
+        verify(repository, times(1)).findById(product1.getProductId());
         assertEquals(product1, foundProduct);
     }
 

@@ -35,7 +35,7 @@ class ProductRepositoryTest {
         existingProduct2.setProductQuantity(10);
         productRepository.create(existingProduct2);
 
-        Product nonExistingProduct = productRepository.findProductById("nonexistentId");
+        Product nonExistingProduct = productRepository.findById("nonexistentId");
         assertNull(nonExistingProduct);
     }
 
@@ -133,7 +133,7 @@ class ProductRepositoryTest {
         updatedProduct.setProductQuantity(50);
         productRepository.edit(updatedProduct);
 
-        Product savedProduct = productRepository.findProductById(updatedProduct.getProductId());
+        Product savedProduct = productRepository.findById(updatedProduct.getProductId());
         assertNotNull(savedProduct);
         assertEquals(updatedProduct.getProductName(), savedProduct.getProductName());
         assertEquals(updatedProduct.getProductQuantity(), savedProduct.getProductQuantity());
@@ -151,7 +151,7 @@ class ProductRepositoryTest {
         editedProduct.setProductId("product");
         assertThrows(IllegalArgumentException.class, () -> productRepository.edit(editedProduct));
 
-        Product originalProduct = productRepository.findProductById(product.getProductId());
+        Product originalProduct = productRepository.findById(product.getProductId());
         assertNotNull(originalProduct);
         assertEquals("testProduct", originalProduct.getProductName());
         assertEquals(100, originalProduct.getProductQuantity());
@@ -171,7 +171,7 @@ class ProductRepositoryTest {
         editedProduct.setProductQuantity(-100);
         assertThrows(IllegalArgumentException.class, () -> productRepository.edit(editedProduct));
 
-        Product originalProduct = productRepository.findProductById(product.getProductId());
+        Product originalProduct = productRepository.findById(product.getProductId());
         assertNotNull(originalProduct);
         assertEquals(100, originalProduct.getProductQuantity());
     }
@@ -186,6 +186,6 @@ class ProductRepositoryTest {
 
         Product deletedProduct = productRepository.delete(product.getProductId());
         assertEquals(product.getProductId(), deletedProduct.getProductId());
-        assertNull(productRepository.findProductById(product.getProductId()));
+        assertNull(productRepository.findById(product.getProductId()));
     }
 }

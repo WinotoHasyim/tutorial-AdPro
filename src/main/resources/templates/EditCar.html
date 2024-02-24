@@ -14,17 +14,17 @@
         <input type="hidden" th:field="*{carId}" />
         <div class="mb-4">
             <label for="carName" class="block text-sm font-medium text-gray-600">Car Name</label>
-            <input type="text" id="carName" th:field="*{carName}" name="carName" th:value="${car.carName}" class="mt-1 p-2 w-full border rounded-md">
+            <input type="text" id="carName" th:field="*{carName}" name="carName" th:value="${car.carName}" class="mt-1 p-2 w-full border rounded-md" placeholder="Enter car' name" required>
         </div>
 
         <div class="mb-4">
             <label for="carColor" class="block text-sm font-medium text-gray-600">Car Color</label>
-            <input th:field="*{carColor}" type="text" id="carColor" name="carQuantity" th:value="${car.carColor}" class="mt-1 p-2 w-full border rounded-md">
+            <input th:field="*{carColor}" type="text" id="carColor" name="carQuantity" th:value="${car.carColor}" class="mt-1 p-2 w-full border rounded-md" placeholder="Enter car' color" required>
         </div>
 
         <div class="mb-4">
             <label for="carQuantity" class="block text-sm font-medium text-gray-600">Car Quantity</label>
-            <input th:field="*{carQuantity}" type="number" id="carQuantity" name="carQuantity" th:value="${car.carQuantity}" class="mt-1 p-2 w-full border rounded-md">
+            <input th:field="*{carQuantity}" type="number" id="carQuantity" name="carQuantity" th:value="${car.carQuantity}" class="mt-1 p-2 w-full border rounded-md" min="0" placeholder="Enter car' quantity" required>
         </div>
 
         <div class="flex justify-end">
