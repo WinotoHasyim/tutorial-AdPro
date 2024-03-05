@@ -50,7 +50,7 @@ class OrderServiceImplTest {
 
     @Test
     void testCreateOrder() {
-        Order order = orders.get(2);
+        Order order = orders.get(1);
         doReturn(order).when(orderRepository).save(order);
 
         Order result = orderService.createOrder(order);
