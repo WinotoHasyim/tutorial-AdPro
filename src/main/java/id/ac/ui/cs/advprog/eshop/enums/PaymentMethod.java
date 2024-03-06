@@ -2,8 +2,6 @@ package id.ac.ui.cs.advprog.eshop.enums;
 
 import lombok.Getter;
 
-import java.util.Arrays;
-
 @Getter
 public enum PaymentMethod {
     VOUCHER_CODE("VOUCHER_CODE"),
@@ -11,12 +9,16 @@ public enum PaymentMethod {
 
     private final String value;
 
-    PaymentMethod(String value) {
+    private PaymentMethod(String value) {
         this.value = value;
     }
 
-    public static boolean contains(String param) {
-        return Arrays.stream(PaymentMethod.values())
-                .anyMatch(paymentMethod -> paymentMethod.getValue().equals(param));
+    public static boolean contains (String param) {
+        for (PaymentMethod paymentMethod : PaymentMethod.values()) {
+            if (paymentMethod.getValue().equals(param)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
