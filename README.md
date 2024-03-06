@@ -6,8 +6,14 @@
 
 1. **Is this TDD flow useful enough for you or not. If not, explain things that you need to do next time you make more tests.**
 
+TDD sangat berguna karena memiliki berbagai manfaat:
+- Code Qualitynya jadi lebih baik karena dengan fondasi test yang dibuat di awal development, kita bisa jadi terstruktur dalam mengimplementasi kodenya
+- Debugging juga menjadi lebih mudah karena Test sudah dipredefined
+- TDD dapat membuat kita berfokus pada suatu hal terlebih dahulu, seperti membuat test kemudian mendevelop programnya sehingga kita tidak harus memikirkan potential bug ketika memprogram
 
 2. **Reflect whether your tests have successfully followed F.I.R.S.T. principle or not. If not, explain things that you need to do the next time you create more tests.**
+
+Menurut saya, test saya sudah memenuhi FIRST Principle karena saya usdah mengisolasi test-testnya dan tidak membuat test menjadi terlalu panjang, serta testnya memiliki assertion di dalamnya. Selain itu, testnya mengkover hampir seluruh line of code. Hal ini sesuai dengan FIRST Principle Yaitu, Fast, Independent, Repeatable, Self-Validating dan timely/thorough.
 
 
 <details>
