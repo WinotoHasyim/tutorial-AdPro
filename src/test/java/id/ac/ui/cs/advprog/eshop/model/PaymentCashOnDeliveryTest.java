@@ -60,4 +60,12 @@ class PaymentCashOnDeliveryTest {
     void testSetPaymentDataWithNullPaymentData() {
         assertThrows(NullPointerException.class, () -> payment.setPaymentData(null));
     }
+
+    @Test
+    void testSetPaymentDataWithNullDeliveryFee() {
+        this.paymentData.put(ADDRESS_KEY, "Jalan Pondok Sofura");
+        this.paymentData.put(DELIVERY_FEE_KEY, null);
+        payment.setPaymentData(this.paymentData);
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
+    }
 }
