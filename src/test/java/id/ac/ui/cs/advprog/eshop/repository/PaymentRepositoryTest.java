@@ -81,4 +81,30 @@ class PaymentRepositoryTest {
         Payment findResult = paymentRepository.findById("zczc");
         assertNull(findResult);
     }
+
+    @Test
+    void testFindAll() {
+        for (Payment payment : payments) {
+            paymentRepository.save(payment);
+        }
+
+        List<Payment> findResult = paymentRepository.findAll();
+        assertEquals(payments.size(), findResult.size());
+        for (int i = 0; i < payments.size(); i++) {
+            Payment originalPayment = payments.get(i);
+            Payment retrievedPayment = findResult.get(i);
+        
+            assertEquals(originalPayment.getId(), retrievedPayment.getId());
+            assertEquals(originalPayment.getMethod(), retrievedPayment.getMethod());
+            assertEquals(originalPayment.getStatus(), retrievedPayment.getStatus());
+            assertSame(originalPayment.getPaymentData(), retrievedPayment.getPaymentData());
+        }
+    }
+
+    @Test
+    void testFindAllEmpty() {
+        paymentRepository = new PaymentRepository();
+        List<Payment> findResult = paymentRepository.findAll();
+        assertTrue(findResult.isEmpty());
+    }
 }
