@@ -17,18 +17,10 @@ class PaymentTest {
     void setUp() {
         this.paymentData = new HashMap<>();
 
-        Payment payment1 = new Payment();
-        payment1.setPaymentId("eb558e9f-1c39-460e-8860-71af6af63bd6");
-        payment1.setPaymentMethod("VOUCHER_CODE");
-        payment1.setPaymentStatus("PENDING");
+        Payment payment1 = new Payment("eb558e9f-1c39-460e-8860-71af6af63bd6", "VOUCHER_CODE", this.paymentData);
 
-        Product payment2 = new Payment();
-        payment2.setPaymentId("a2c62328-4a37-4664-83c7-f32db8620155");
-        payment2.setPaymentMethod("CASH_ON_DELIVERY");
-        payment2.setPaymentStatus("PENDING");
-
-        this.paymentData.put(payment1);
-        this.paymentData.put(payment2);
+        Payment payment2 = new Payment("a2c62328-4a37-4664-83c7-f32db8620155", "CASH_ON_DELIVERY", this.paymentData);
+        
     }
 
     void testCreatePaymentVoucherCodeMethod() {
