@@ -57,4 +57,13 @@ class PaymentVoucherTest {
         payment.setPaymentData(this.paymentData);
         assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
     }
+
+    @Test
+    void testConstructor() {
+        PaymentVoucher payment = new PaymentVoucher(TEST_UUID,
+                PaymentMethod.VOUCHER_CODE.getValue(), this.paymentData);
+        assertEquals(TEST_UUID, payment.getId());
+        assertEquals(PaymentMethod.VOUCHER_CODE.getValue(), payment.getMethod());
+        assertEquals(this.paymentData, payment.getPaymentData());
+    }
 }
