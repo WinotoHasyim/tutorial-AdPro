@@ -59,13 +59,15 @@ class PaymentServiceImplTest {
         payments = new ArrayList<>();
         Map<String, String> paymentData1 = new HashMap<>();
         paymentData1.put("voucherCode", "ESHOP1234ABC5678");
-        Payment payment1 = new Payment("13652556-012a-4c07-b546-54eb1396d79b", PaymentMethod.VOUCHER_CODE.getValue(), paymentData1);
+        Payment payment1 = new Payment("13652556-012a-4c07-b546-54eb1396d79b", PaymentMethod.VOUCHER_CODE.getValue(),
+                paymentData1);
         payments.add(payment1);
 
         Map<String, String> paymentData2 = new HashMap<>();
         paymentData2.put("address", "Jalan Pondok Sofura");
         paymentData2.put("deliveryFee", "25000");
-        Payment payment2 = new Payment("13652556-012a-4c07-b546-54eb1396d79b", PaymentMethod.CASH_ON_DELIVERY.getValue(), paymentData2);
+        Payment payment2 = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
+                PaymentMethod.CASH_ON_DELIVERY.getValue(), paymentData2);
         payments.add(payment2);
     }
 
@@ -75,9 +77,11 @@ class PaymentServiceImplTest {
         Payment payment = payments.get(0);
         doReturn(payment).when(paymentRepository).save(any(Payment.class));
 
-        Map<String, String> tempPaymentData = new HashMap<>(){{
-            put("voucherCode", "ESHOP1234ABC5678");
-        }};
+        Map<String, String> tempPaymentData = new HashMap<>() {
+            {
+                put("voucherCode", "ESHOP1234ABC5678");
+            }
+        };
         Payment result = paymentService.addPayment(order, PaymentMethod.VOUCHER_CODE.getValue(), tempPaymentData);
         verify(paymentRepository, times(1)).save(any(Payment.class));
         assertEquals(payment.getId(), result.getId());
@@ -132,7 +136,7 @@ class PaymentServiceImplTest {
     void testGetAllPayments() {
         doReturn(payments).when(paymentRepository).findAll();
         List<Payment> result = paymentService.getAllPayments();
-        
+
         verify(paymentRepository, times(1)).findAll();
         assertEquals(payments, result);
     }
