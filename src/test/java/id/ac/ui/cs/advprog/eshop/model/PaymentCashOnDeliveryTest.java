@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class PaymentCashOnDeliveryTest {
     private static final String TEST_UUID = "13652556-012a-4c07-b546-54eb1396d79b";
@@ -53,5 +54,10 @@ class PaymentCashOnDeliveryTest {
     void testSetPaymentDataWithEmptyPaymentData() {
         payment.setPaymentData(this.paymentData);
         assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
+    }
+
+    @Test
+    void testSetPaymentDataWithNullPaymentData() {
+        assertThrows(NullPointerException.class, () -> payment.setPaymentData(null));
     }
 }
