@@ -2,6 +2,17 @@
 
 > #### Winoto Hasyim - 2206025243 - Pemrograman Lanjut B
 
+## Module 4 - Pemrograman Lanjut 2023/2024 Genap
+
+1. **Is this TDD flow useful enough for you or not. If not, explain things that you need to do next time you make more tests.**
+
+
+2. **Reflect whether your tests have successfully followed F.I.R.S.T. principle or not. If not, explain things that you need to do the next time you create more tests.**
+
+
+<details>
+<summary>Module 3</summary>
+
 ## Module 3 - Pemrograman Lanjut 2023/2024 Genap
 
 1. **Explain what principles you apply to your project!**
@@ -34,6 +45,8 @@
     - ***Tight Coupling***: Tanpa Dependency Inversion Principle (DIP), high-level module mungkin langsung bergantung pada low-level module, menyebabkan Tight Coupling. Ini membuatnya sulit untuk mengubah satu modul tanpa memengaruhi modul lain. Misalnya, jika CarController langsung bergantung pada CarServiceImpl, setiap perubahan pada CarServiceImpl mungkin memerlukan perubahan pada CarController.
     - ***Hard to Maintain***: Tanpa Single Responsibility Principle (SRP), sebuah kelas mungkin bertanggung jawab atas beberapa bagian fungsionalitas. Ini membuat kelas sulit dipahami dan dipelihara, dan perubahan pada satu bagian fungsionalitas mungkin memunculkan bug di bagian lain. Misalnya, jika kelas Vehicle bertanggung jawab untuk mengendalikan mobil dan sepeda motor, maka perubahan pada cara mengendalikan mobil bisa mempengaruhi cara mengendalikan sepeda motor.
     - ***Hard to Extend***: Tanpa Open-Closed Principle (OCP), menambahkan fungsionalitas baru mungkin memerlukan modifikasi kelas yang ada, yang meningkatkan risiko memunculkan bug. Misalnya, jika kita ingin menambahkan jenis kendaraan baru dan kita tidak memiliki kelas dasar Vehicle, kita mungkin perlu memodifikasi kode yang menangani kendaraan untuk mendukung jenis baru.
+
+</details>
 
 <details>
 <summary>Module 2</summary>
