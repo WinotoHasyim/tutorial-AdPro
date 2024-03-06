@@ -2,9 +2,10 @@ package id.ac.ui.cs.advprog.eshop.model;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.Map;
+
+import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 
 @Builder
 @Getter
@@ -27,7 +28,7 @@ public class Payment {
     }
 
     public void setStatus(String status) {
-        if (status.equals("PENDING") || status.equals("SUCCESS") || status.equals("REJECTED")){
+        if (PaymentStatus.contains(status)){
             this.status = status;
         } else {
             throw new IllegalArgumentException();
