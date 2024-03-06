@@ -145,4 +145,16 @@ class PaymentServiceImplTest {
         verify(paymentRepository, times(1)).findAll();
         assertEquals(new ArrayList<Payment>(), result);
     }
+
+    @Test
+    void testSetStatusOrderNotFound() {
+        Payment payment = payments.get(1);
+
+        assertThrows(java.util.NoSuchElementException.class, () -> {
+            paymentService.setStatus(payment, PaymentStatus.SUCCESS.getValue());
+        });
+
+        verify(orderRepository, times(0)).save(any(Order.class));
+        verify(paymentRepository, times(0)).save(any(Payment.class));
+    }
 }
