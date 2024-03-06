@@ -12,5 +12,13 @@ public class PaymentCashOnDelivery extends Payment {
 
     @Override
     public void setPaymentData(Map<String, String> paymentData) {
+        if (paymentData.isEmpty() || 
+            paymentData.get("address").isEmpty() || 
+            paymentData.get("deliveryFee").isEmpty()) {
+            this.status = PaymentStatus.REJECTED.getValue();
+        } else {
+            this.paymentData = paymentData;
+            this.status = PaymentStatus.SUCCESS.getValue();
+        }
     }
 }
