@@ -5,6 +5,7 @@ import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import java.util.Map;
 
 public class PaymentVoucher extends Payment {
+    final String VOUCHER_CODE_KEY = "voucherCode";
 
     public PaymentVoucher(String id, String method, Map<String, String> paymentData) {
         super(id, method, paymentData);
@@ -16,7 +17,7 @@ public class PaymentVoucher extends Payment {
     
     @Override
     public void setPaymentData(Map<String, String> paymentData) {
-        final String VOUCHER_CODE_KEY = "voucherCode";
+    
         if (paymentData.isEmpty()) {
             throw new IllegalArgumentException();
         } else {
