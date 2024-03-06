@@ -17,11 +17,6 @@ class PaymentTest {
     @BeforeEach
     void setUp() {
         this.paymentData = new HashMap<>();
-
-        Payment payment1 = new Payment("eb558e9f-1c39-460e-8860-71af6af63bd6", PaymentMethod.VOUCHER_CODE.getValue(), this.paymentData);
-
-        Payment payment2 = new Payment("a2c62328-4a37-4664-83c7-f32db8620155", PaymentMethod.CASH_ON_DELIVERY.getValue(), this.paymentData);
-
     }
 
     void testCreatePaymentVoucherCodeMethod() {
