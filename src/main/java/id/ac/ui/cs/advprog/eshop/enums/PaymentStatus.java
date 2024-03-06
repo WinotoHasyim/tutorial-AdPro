@@ -2,6 +2,8 @@ package id.ac.ui.cs.advprog.eshop.enums;
 
 import lombok.Getter;
 
+import java.util.Arrays;
+
 @Getter
 public enum PaymentStatus {
     SUCCESS("SUCCESS"),
@@ -10,16 +12,12 @@ public enum PaymentStatus {
 
     private final String value;
 
-    private PaymentStatus(String value) {
+    PaymentStatus(String value) {
         this.value = value;
     }
 
-    public static boolean contains (String param) {
-        for (PaymentStatus paymentStatus : PaymentStatus.values()) {
-            if (paymentStatus.getValue().equals(param)) {
-                return true;
-            }
-        }
-        return false;
+    public static boolean contains(String param) {
+        return Arrays.stream(PaymentStatus.values())
+                .anyMatch(paymentStatus -> paymentStatus.getValue().equals(param));
     }
 }
